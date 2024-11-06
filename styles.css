@@ -1,7 +1,7 @@
 /* CSS variables */
 
 :root {
-  --cardFromRight: #acbea3;
+  --cardFromRight: #a3b5be;
   --cardFromLeft: #120d31;
   --rotate: #8de969;
 }
@@ -12,7 +12,7 @@ body {
 }
 
 /* MAIN */
-main {
+.main {
   height: 100vh;
   gap: 50px;
   display: flex;
@@ -35,10 +35,35 @@ main {
 .slideInLeftCard {
   background-color: var(--cardFromLeft);
   color: whitesmoke;
+  animation-name: slideInLeft;
+  animation-duration: 3s;
+  animation-timing-function: ease-in;
+}
+
+@keyframes slideInLeft {
+  from {
+    transform: translateX(-1000px);
+  }
+  to {
+    transform: translateX(0);
+  }
 }
 
 .slideInRightCard {
   background-color: var(--cardFromRight);
+  animation: slideInRight 3s ease-in;
+  /*
+  animation: name duration timing-function delay iteration-count direction fill-mode;
+  */
+}
+
+@keyframes slideInRight {
+  from {
+    transform: translateX(1000px)
+  }
+  to {
+    transform: translateX(0);
+  }
 }
 
 .rotateCard {
@@ -46,6 +71,29 @@ main {
   width: 100px;
   height: 100px;
   background-color: var(--rotate);
+  animation-name: fullRotation;
+  animation-duration: 3s;
+  animation-timing-function: ease-in;
+  animation-fill-mode: forwards;
+}
+
+@keyframes fullRotation {
+  0% {
+    transform: rotate(0);
+  }
+  50% {
+    transform: rotate(360deg);
+  }
+  100% {
+    transform: rotate(0);
+  }
+}
+
+.flexColCenter {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
 }
 
 .buttonContainer {
@@ -61,4 +109,21 @@ main {
   border-color: lightgrey;
   border-style: solid;
   box-shadow: 2px 2px 5px lightgrey;
+}
+
+.butttonColor, .buttonSize, .buttonOpacity {
+  transition-duration: 1s;
+  transition-timing-function: ease-in;
+}
+
+.buttonColor:hover {
+  background-color: forestgreen;
+}
+
+.buttonSize:hover {
+  scale: 1.3;
+}
+
+.buttonOpacity {
+  opacity: 50%;
 }
